@@ -56,6 +56,13 @@
     head.addEventListener('click', toggle);
     head.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
   }
+  // 全部展開/收合後同步所有標題列的 aria-expanded（不依賴 enhance.js）
+  function syncAllAria(){
+    document.querySelectorAll('.card,.group').forEach(e=>{
+      const h=e.querySelector('.card-head,.group-head');
+      if(h) h.setAttribute('aria-expanded', String(!e.classList.contains('collapsed')));
+    });
+  }
 
   function techCard(d){
     const card=document.createElement('article');
@@ -84,7 +91,10 @@
   function render(){
     $('#sub').textContent='科目：'+DATA.meta.subject+'｜共 '+DATA.tech.length+' 張技術卡';
     const wrap=$('#cards'); wrap.innerHTML='';
-    const h1order=[...new Set(DATA.tech.map(t=>t.h1))];
+    // 群組顯示順序依 meta.groups（官方大綱章節序）；不在清單者退回出現序附於後
+    const seen=[...new Set(DATA.tech.map(t=>t.h1))];
+    const groups=(DATA.meta&&DATA.meta.groups)||[];
+    const h1order=[...groups.filter(g=>seen.includes(g)), ...seen.filter(g=>!groups.includes(g))];
     h1order.forEach(h1=>{
       const g=document.createElement('section');
       g.className='group'; g.dataset.group=h1;
@@ -99,8 +109,8 @@
       wrap.appendChild(g);
     });
     $('#search').addEventListener('input',applyFilter);
-    $('#expandAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.remove('collapsed'));
-    $('#collapseAll').onclick=()=>document.querySelectorAll('.card,.group').forEach(e=>e.classList.add('collapsed'));
+    $('#expandAll').onclick=()=>{document.querySelectorAll('.card,.group').forEach(e=>e.classList.remove('collapsed'));syncAllAria();};
+    $('#collapseAll').onclick=()=>{document.querySelectorAll('.card,.group').forEach(e=>e.classList.add('collapsed'));syncAllAria();};
     const q=new URLSearchParams(location.search).get('q');
     if(q){ $('#search').value=q; }
     applyFilter();

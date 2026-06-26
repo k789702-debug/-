@@ -60,6 +60,11 @@ const boldBalanced = s => (String(s).match(/\*\*/g) || []).length % 2 === 0;
   } else if ('qa' in c) errors.push(`${id}: qa 必須為陣列`);
 });
 
+// 群組一致性：flows 的 key 必須是合法群（防 typo）；meta.groups 列了卻無卡 → 提醒（flows 可只覆蓋部分群，不強制相等）。
+flowKeys.forEach(k => { if (!groupSet.has(k)) errors.push(`flows 的 "${k}" 不在 meta.groups（請對齊群名）`); });
+const usedClinGroups = new Set((data.clinical || []).map(c => c.h1));
+groupSet.forEach(g => { if (!usedClinGroups.has(g)) warns.push(`meta.groups 的 "${g}" 沒有任何卡片`); });
+
 // 跨模組連結解析（warn）：method 應對應某張技術卡的 abbr/en/zh，否則前端不會產生連結。
 // 技術資料缺失或無法解析時靜默略過（保持零相依、單檔可獨立驗證）。
 try {

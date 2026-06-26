@@ -51,7 +51,7 @@
         ["靈敏度", "中", "高", "極高"],
         ["需標準曲線", "—", "是", "否"]
       ],
-      "applications": ["BCR-ABL1", "EGFR", "HPV", "HBV 病毒量", "HIV", "CYP2C19 / clopidogrel"],
+      "applications": ["BCR-ABL1", "EGFR", "HPV", "HBV 病毒量", "HIV", "CYP2C19 / clopidogrel", "結核分枝桿菌分子檢測", "細菌抗藥基因偵測", "ALL 微量殘存疾病(MRD)", "BKV"],
       "hot": ["**Ct 與起始模板量成反比**", "TaqMan 用 5'→3' 外切酶活性釋放螢光", "SYBR Green 需熔解曲線確認特異性"],
       "qa": [
         ["113年 第46題", "PCR 擴增曲線三階段為 exponential／linear／plateau；**elongation phase** 不屬於此三階段"],
@@ -81,7 +81,7 @@
         ["偵測未知突變", "可但低通量", "最適"],
         ["偵測下限(VAF)", "約 15–20%", "可達 1% 以下"]
       ],
-      "applications": ["EGFR", "BRCA / HER2", "唐氏症 / NIPT"],
+      "applications": ["EGFR", "BRCA / HER2", "唐氏症 / NIPT", "細菌16S rRNA鑑定", "真菌分子鑑定", "NPM1 (AML)", "HLA 分型", "親子鑑定 (STR)", "GIST (C-KIT)"],
       "hot": ["**index/barcode** 讓一次 run 同時分析多檢體", "第三代單分子定序**不需 PCR 增幅**且讀長長", "**TMB／未知突變**首選 NGS"],
       "qa": [
         ["113年 第49題", "文庫建構接上 index／bar code 的目的＝**一次定序反應同時分析多個檢體**"],
@@ -112,7 +112,7 @@
         ["原理", "鏈終止", "合成釋焦磷酸發光", "平行合成定序"],
         ["通量", "低", "中", "高"]
       ],
-      "applications": ["EGFR", "BRCA / HER2", "HIV", "CYP2C19 / clopidogrel", "β型海洋性貧血"],
+      "applications": ["EGFR", "BRCA / HER2", "HIV", "CYP2C19 / clopidogrel", "β型海洋性貧血", "細菌16S rRNA鑑定", "真菌分子鑑定", "細菌抗藥基因偵測", "ALL 微量殘存疾病(MRD)", "NPM1 (AML)", "HLA 分型", "GIST (C-KIT)", "三核苷酸重複疾病"],
       "hot": ["**ddNTP 鏈終止**為原理核心", "**雙向定序**確認變異", "**blastn** 比對 DNA（blastp 比對蛋白質）"],
       "qa": [
         ["110年 第79題", "Sanger 定序：訊號高度不適合做核苷酸相對比例標準；應雙向定序、變異位點勿太靠近 primer"],
@@ -169,6 +169,7 @@
         ["探針", "原位合成寡核苷酸", "寡核苷酸或 cDNA"],
         ["密度", "高", "較低"]
       ],
+      "applications": ["結核分枝桿菌分子檢測"],
       "hot": ["兩種製程差異（密度、探針來源）", "**SNP array** 適用 CNV/LOH", "**aCGH** 偵測微缺失/重複"],
       "qa": [
         ["113年 第54題", "微陣列製程：**『點樣法探針密度可達數十萬點/cm²』最不適當**（點樣密度較低；高密度為光引導原位合成，TPMI 即採光引導）"]
@@ -254,6 +255,7 @@
         ["分離對象", "一般片段", "**大分子量 DNA**", "定序/片段分析"],
         ["關鍵", "依大小篩分", "**變換電場方向**", "高解析、自動化"]
       ],
+      "applications": ["親子鑑定 (STR)", "三核苷酸重複疾病"],
       "hot": ["**TAE 利於回收純化 DNA**（DNA 遷移較快）；**TBE 緩衝力強**、適合小片段/長跑", "**PFGE 靠變換電場方向**分離大分子 DNA", "核酸電泳**往正極**移動、小片段較快"],
       "qa": [
         ["110年 第46題", "電泳緩衝液：**電泳後要純化回收 DNA 最好用 TAE**（TBE 緩衝力較強但不利回收）"],
@@ -427,6 +429,7 @@
         ["Northern", "RNA", "標記 DNA/RNA 探針"],
         ["Western", "蛋白質", "抗體"]
       ],
+      "applications": ["三核苷酸重複疾病"],
       "hot": ["**Southern=DNA、Northern=RNA、Western=蛋白**", "**Southern blot 可檢測 α-thal 大片段缺失**", "LOH 用微衛星標記偵測，**非西方墨點**"],
       "qa": [
         ["109年 第69題", "α-thal 東南亞型(大片段缺失)：**『南方墨點法無法用於檢測此型』為錯誤敘述**（Southern blot 可測大片段缺失；gap-PCR 亦可鑑別）"],
@@ -447,7 +450,7 @@
         ["SSP-PCR", "序列特異引子 PCR"],
         ["SSOP", "序列特異寡核苷酸探針雜交"]
       ],
-      "applications": ["HPV", "HCV 基因分型"],
+      "applications": ["HPV", "HCV 基因分型", "HLA 分型"],
       "hot": ["**SSOP：單股寡核苷酸探針、需先 PCR、用於 HLA 分型**", "SSOP **非 RNA 探針**、長約 19–20 bases、帶標定", "**reverse hybridization(line probe)** 用於 HCV/HBV 分型"],
       "qa": [
         ["110年 第54題", "使用**雜交(hybridization)**鑑定 HLA 的方法＝**特異性寡核苷酸探針(SSOP)**"],
