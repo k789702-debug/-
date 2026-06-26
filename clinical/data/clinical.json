@@ -1,0 +1,244 @@
+{
+  "meta": {
+    "subject": "醫學分子檢驗學",
+    "version": "0.4.0",
+    "updated": "2026-06-26",
+    "source": "考選部「醫事檢驗師」國家考試「醫學分子檢驗學與臨床鏡檢學（包括寄生蟲學）」民國 110、113 年，經 moex-exam 檢索分子題",
+    "groups": ["腫瘤分子標記", "藥物基因體學", "感染症分子診斷", "遺傳病與產前篩檢"]
+  },
+  "flows": {
+    "腫瘤分子標記": [
+      "懷疑 CML → 偵測 **t(9;22) BCR-ABL1** → 確診後以 **RT-qPCR 定量(IS)** 監測治療反應(MMR/DMR)"
+    ],
+    "藥物基因體學": [
+      "用藥前 → 檢測代謝酵素基因多型性（CYP2C9／CYP2C19／UGT1A1…）→ 預測療效/毒性 → 調整劑量或選藥"
+    ],
+    "感染症分子診斷": [
+      "採檢(注意抗凝劑/保存) → 核酸萃取 → RT/PCR 或等溫擴增 → 病毒量定量/基因分型/抗藥性定序 → 指導治療"
+    ],
+    "遺傳病與產前篩檢": [
+      "家族史/帶因篩檢 → 依變異型選法(大片段缺失用 gap-PCR、點突變用定序/ARMS) → 產前診斷(注意母體污染) → 遺傳諮詢"
+    ]
+  },
+  "clinical": [
+    {
+      "h1": "腫瘤分子標記",
+      "name": "BCR-ABL1",
+      "en": "BCR-ABL1 fusion transcript",
+      "zh": "費城染色體 t(9;22) 融合基因",
+      "stars": 3,
+      "target": "**t(9;22)(q34;q11)** 形成的 BCR-ABL1 融合 mRNA（主要型 **p210** e13a2/e14a2；ALL 常見 p190）",
+      "method": ["qPCR", "FISH"],
+      "clinical": "**慢性骨髓性白血病(CML)** 的診斷、分型與治療監測；指導 TKI（如 imatinib）療效評估與微量殘存疾病(MRD)追蹤。",
+      "interpret": "結果以 **國際標準 IS(%)** 表示（BCR-ABL1/內控基因比值）。**MMR(MR3)=≤0.1%IS**（自基準 3-log 下降）；EMR=≤10%IS；DMR：MR4=≤0.01%、MR4.5=≤0.0032%。Ct/比值越低代表殘存越少。",
+      "pitfall": "不同實驗室需以 **IS 換算係數** 校正才能比較；內控基因(ABL1/GUSB/BCR)選擇影響結果；dPCR 與 RT-qPCR 在深層反應分級可能略有位移。",
+      "hot": ["**MMR=MR3=0.1%IS**", "p210 對應 CML、p190 對應 Ph⁺ ALL", "監測首選 **RT-qPCR + 國際標準(IS)**"],
+      "qa": [
+        ["110年 第75題", "以 **RT-PCR 偵測 BCR-ABL1** t(9;22)：引子需跨融合接點——**正向(F)置於 BCR、反向(R)置於 ABL1 外顯子**（F: BCR exon1、R: ABL1 exon3）"],
+        ["110年 第77題", "**imatinib** 為首個 CML 標靶藥，與 ATP 競爭結合 BCR-ABL1 融合蛋白以阻斷下游訊息傳遞"]
+      ]
+    },
+    {
+      "h1": "藥物基因體學",
+      "name": "CYP2C9 / warfarin",
+      "en": "CYP2C9 genotype for warfarin",
+      "zh": "warfarin 代謝基因型",
+      "stars": 2,
+      "target": "**CYP2C9** 基因多型性（*2、*3 等）；臨床常合併 **VKORC1** 一起評估",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "預測 **warfarin**（抗凝血劑）劑量需求、降低出血風險，為藥物基因體學代表性應用。",
+      "interpret": "慢代謝型（*2/*3）代謝 warfarin 較慢 → **需較低起始劑量**；合併 VKORC1 基因型可提高劑量預測力。",
+      "pitfall": "需合併 VKORC1 與臨床因素（年齡、體重、共用藥）；不同族群等位基因頻率差異大。",
+      "hot": ["受 **CYP2C9** 多型性影響最大的藥物＝**warfarin**", "常合併 **VKORC1** 評估", "慢代謝型需減量"],
+      "qa": [
+        ["113年 第77題", "代謝速率最受 **CYP2C9** 基因多型性影響的藥物＝**warfarin**"]
+      ]
+    },
+    {
+      "h1": "藥物基因體學",
+      "name": "UGT1A1 / irinotecan",
+      "en": "UGT1A1 genotype for irinotecan",
+      "zh": "irinotecan 毒性基因型",
+      "stars": 2,
+      "target": "**UGT1A1*28**（啟動子 TA repeat）等多型性，影響 irinotecan 活性代謝物 **SN-38** 的葡萄糖醛酸化解毒",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "預測 **irinotecan**（抗癌妥，腸胃道癌化療藥）之毒性（嚴重腹瀉、嗜中性白血球低下），用藥前基因檢測。",
+      "interpret": "**UGT1A1*28** 純合者 SN-38 解毒慢 → 毒性風險高 → 建議**減量**。",
+      "pitfall": "毒性受多因子影響；與其他藥物交互作用。",
+      "hot": ["**UGT1A1*28** 與 irinotecan 毒性相關", "SN-38 經 **葡萄糖醛酸化** 解毒", "高風險者需減量"],
+      "qa": [
+        ["113年 第73題", "irinotecan 副作用與 **UGT1A1** 相關；最正確敘述＝**抗癌妥最終代謝為 SN-38G（葡萄糖醛酸化）經尿液排出**（答案 D）；UGT1A1 活性低者 SN-38 解毒慢、毒性高"]
+      ]
+    },
+    {
+      "h1": "感染症分子診斷",
+      "name": "HCV 基因分型",
+      "en": "HCV genotyping",
+      "zh": "C型肝炎病毒基因分型",
+      "stars": 2,
+      "target": "**HCV RNA** 與其基因型（genotype 1–6），基因型影響抗病毒治療策略",
+      "method": ["qPCR"],
+      "clinical": "病毒量監測（RT-qPCR）與基因分型共同指導直接抗病毒藥(DAA)治療；基因分型常用 **reverse hybridization（line probe）**。",
+      "interpret": "reverse hybridization 步驟：**檢體製備 → RNA 反轉錄成 cDNA → 特異性引子 PCR 擴增 → 與基因型特異寡核苷酸探針陣列雜交 → 呈色 → 判讀**。",
+      "pitfall": "「先反轉錄再 PCR」與雜交步驟**順序**為常考；RNA 易降解需注意保存。",
+      "hot": ["分型用 **reverse hybridization(line probe)**", "需先 **RT 成 cDNA** 再 PCR", "步驟順序為考點"],
+      "qa": [
+        ["113年 第68題", "reverse hybridization 進行 HCV 基因分型之**步驟順序**（檢體→RT→PCR→雜交→呈色→判讀）"],
+        ["113年 第69題", "依分型型態表與檢測結果判讀 HCV 基因型（承上題情境）"]
+      ]
+    },
+    {
+      "h1": "遺傳病與產前篩檢",
+      "name": "甲型海洋性貧血",
+      "en": "Alpha-thalassemia",
+      "zh": "甲型海洋性貧血（α-thalassemia）",
+      "stars": 2,
+      "target": "**α-globin (HBA) 基因大片段缺失**；國人最常見為東南亞缺失型(**SEA**，第 16 號染色體 >20 kb 缺失)",
+      "method": ["gap-PCR"],
+      "clinical": "帶因篩檢與**產前診斷**；於缺失片段前後設計引子，以傳統 PCR/**gap-PCR** 偵測缺失。",
+      "interpret": "缺失型以 gap-PCR 判斷有無缺失帶；點突變型則需定序。",
+      "pitfall": "跨缺失引子 PCR **不適合直接用於羊膜穿刺檢體**，主因**母體細胞(DNA)污染**可能造成偽陰性/假性正常。",
+      "hot": ["**SEA 缺失型**國人最常見", "**gap-PCR** 偵測大片段缺失", "羊膜穿刺檢體有**母體污染**風險"],
+      "qa": [
+        ["110年 第76題", "跨缺失片段引子 PCR 檢測 α-海洋性貧血，不適合羊膜穿刺檢體之主因＝**母體細胞污染**"]
+      ]
+    },
+    {
+      "h1": "遺傳病與產前篩檢",
+      "name": "唐氏症 / NIPT",
+      "en": "Down syndrome (trisomy 21) / NIPT",
+      "zh": "唐氏症與非侵入性產前檢測",
+      "stars": 2,
+      "target": "**第 21 號染色體三體(trisomy 21)**；母血游離 DNA(cfDNA) 或羊水細胞",
+      "method": ["NGS"],
+      "clinical": "產前篩檢；母血 cfDNA **非侵入性產前檢測(NIPT)** 以大規模平行定序評估 21 號染色體劑量（**為篩檢、非確診**），傳統母血血清標記配合年齡估算風險，確診需羊膜穿刺核型分析。",
+      "interpret": "**NIPT 為篩檢非確診**，陽性需以羊膜穿刺**核型分析/QF-PCR** 確認；母血甲型胎蛋白(AFP)配合年齡估風險。",
+      "pitfall": "trisomy 21 多因減數分裂**不分離(nondisjunction)**；高齡孕婦常直接建議核型分析。",
+      "hot": ["trisomy 21 多因**減數分裂不分離**", "**NIPT(cfDNA+NGS)** 為篩檢", "確診需核型分析"],
+      "qa": [
+        ["113年 第70題", "唐氏症敘述（母血 AFP＋年齡估風險、第 21 對染色體三體、減數分裂不分離）之最不適當判斷"]
+      ]
+    },
+    {
+      "h1": "遺傳病與產前篩檢",
+      "name": "β型海洋性貧血",
+      "en": "Beta-thalassemia",
+      "zh": "乙型海洋性貧血（β-thalassemia）",
+      "stars": 3,
+      "target": "**β-globin (HBB) 基因點突變/小片段插入缺失**；國人最常見之一為啟動子 **-28 點突變**",
+      "method": ["Sanger", "ARMS", "Mutation-scan"],
+      "clinical": "帶因篩檢與**產前診斷**。與 α-thal（大片段缺失、用 gap-PCR）不同，**β-thal 主要為點突變**，需以反向點雜交(RDB)/ARMS/定序或 dHPLC 偵測已知突變。",
+      "interpret": "**國人 β-thal 主因為點突變(point mutation)**；-28 型為**啟動子點突變、降低 β-globin 基因轉錄活性**（β-globin 蛋白量減少，而非產生大量異常蛋白）。",
+      "pitfall": "**三核苷酸重複不是 β-thal 的機制**（那是 Huntington/脆性X）；β-thal 由點突變、小缺失或小插入造成。",
+      "hot": ["**國人 β-thal 主因＝點突變**（對比 α-thal 大片段缺失）", "**-28 型＝啟動子點突變、降轉錄活性**", "三核苷酸重複**不是** β-thal 機制"],
+      "qa": [
+        ["110年 第50題", "最主要引起國人乙型海洋性貧血的基因缺陷＝**點突變(point mutation)**"],
+        ["109年 第68題", "**不屬於** β-thal 分子機制者＝**三核苷酸重複**（β-thal 為點突變/小缺失/小插入）"],
+        ["110年 第66題", "β-thal -28 基因型：為啟動子點突變、影響轉錄活性、不改變單個 β-globin 與氧結合力；**『會產生大量異常 β-globin 蛋白』為錯誤**"]
+      ]
+    },
+    {
+      "h1": "腫瘤分子標記",
+      "name": "EGFR",
+      "en": "EGFR mutation (lung cancer companion dx)",
+      "zh": "肺癌 EGFR 標靶基因檢測",
+      "stars": 3,
+      "target": "**EGFR** 酪胺酸激酶區突變：最常見 **exon 19 缺失**與 **exon 21 L858R(第858胺基酸)**；抗藥性 **T790M(exon 20)**",
+      "method": ["qPCR", "Sanger", "NGS"],
+      "clinical": "**肺腺癌標靶治療(TKI)** 的**伴隨式診斷(companion diagnostics)**；EGFR 敏感突變者對 TKI(如 gefitinib、osimertinib)反應佳。",
+      "interpret": "**exon19del / L858R＝TKI 敏感**；治療後出現 **T790M＝抗藥(次級突變)**，改用三代 TKI；定序後以 **blastn** 比對標準序列判突變。",
+      "pitfall": "腫瘤**異質性(heterogeneity)**：單一檢體陰性不代表無突變，可用液態活檢 cfDNA；用藥後可能 **secondary mutation(T790M)** 致抗藥。就癌症而言**突變比例最高的基因為 TP53**（非 EGFR）。",
+      "hot": ["**EGFR exon19del/L858R＝TKI 敏感；T790M＝抗藥**", "EGFR 突變＝肺癌**標靶治療伴隨式診斷**", "定序判突變以 **blastn** 比對；TP53 為突變比例最高基因"],
+      "qa": [
+        ["113年 第75題", "肺腺癌 EGFR L858R 對 TKI 有效；**用藥一段時間後可能產生次級突變(如 T790M)造成用藥無效**為最適當敘述"],
+        ["113年 第78題", "肺癌基因突變的**伴隨式分子檢驗**最常用於預測**標靶藥物治療**效果"],
+        ["113年 第60題", "EGFR 定序後判斷 DNA 突變/變異＝以 **blastn** 比對定序結果與標準序列"],
+        ["113年 第74題", "就癌症而言**突變比例最高的基因＝TP53**（高於 EGFR、K-RAS、VEGF）"]
+      ]
+    },
+    {
+      "h1": "腫瘤分子標記",
+      "name": "BRCA / HER2",
+      "en": "Breast cancer markers (BRCA1/2, ER, HER2)",
+      "zh": "乳癌分子標誌",
+      "stars": 2,
+      "target": "**BRCA1/BRCA2** 生殖系突變（遺傳性乳癌卵巢癌）；治療標誌 **ER(雌激素受體)、HER2/neu**",
+      "method": ["NGS", "Sanger"],
+      "clinical": "BRCA1/2 突變評估遺傳性乳癌風險與 **PARP 抑制劑**適用；**ER 與 HER2/neu** 為乳癌治療（賀爾蒙療法/抗 HER2）最重要的分子標誌。",
+      "interpret": "BRCA1/2 突變**分散於整個基因**（非集中 1–2 個位點），常造成截短(truncated)蛋白失去功能；亦見於**無家族史**者。",
+      "pitfall": "BRCA 突變分散，需**全基因掃描**（定序/dHPLC），不可只測熱點。",
+      "hot": ["乳癌治療最重要分子標誌＝**ER 與 HER2/neu**", "**BRCA1/2 突變分散全基因**、非集中 1–2 位點", "BRCA 也見於**無家族史**者"],
+      "qa": [
+        ["110年 第69題", "乳癌治療計畫最重要的分子檢驗標誌＝**estrogen receptor 及 HER2/neu**"],
+        ["109年 第50題", "BRCA1 乳癌突變：**『突變位置都集中在某 1～2 個核苷酸位置』為錯誤**（突變分散全基因，亦見於無家族史者）"]
+      ]
+    },
+    {
+      "h1": "腫瘤分子標記",
+      "name": "HPV",
+      "en": "Human papillomavirus genotyping",
+      "zh": "人類乳突病毒檢測",
+      "stars": 2,
+      "target": "**高危險型 HPV(16/18 等)** 之 DNA（致癌 E6/E7）",
+      "method": ["qPCR", "SSOP"],
+      "clinical": "**子宮頸癌篩檢**：高危型 HPV DNA 檢測可輔助/優於 Pap 抹片（抹片偽陰性高）；HPV 體外培養困難，故仰賴分子偵測。",
+      "interpret": "PCR 標的選**各型最保守(conserved)的片段**以涵蓋多型別；分型常用**反向雜交(line probe)**。",
+      "pitfall": "**並非所有感染者都會有抗體反應**，血清學不可靠；需以 DNA 檢測活動性感染。",
+      "hot": ["HPV PCR 標的選**最保守片段**涵蓋多型別", "**Pap 抹片偽陰性高**、HPV 體外培養困難", "**非所有感染者都有抗體**，靠 DNA 偵測"],
+      "qa": [
+        ["110年 第48題", "PCR 檢測 HPV 的最佳標的＝**不同型 HPV 中最保守(conserved)的片段**"],
+        ["109年 第66題", "HPV 子宮頸感染：**『所有感染病人都會有抗體反應』為錯誤**（Pap 偽陰性高、體外培養困難、可用 PCR 偵測活動性感染）"]
+      ]
+    },
+    {
+      "h1": "感染症分子診斷",
+      "name": "HBV 病毒量",
+      "en": "HBV viral load",
+      "zh": "B型肝炎病毒量監測",
+      "stars": 2,
+      "target": "**HBV DNA** 定量（病毒量，IU/mL）",
+      "method": ["qPCR", "Isothermal"],
+      "clinical": "慢性 B 型肝炎抗病毒治療的**病毒量監測**與療效評估；可用 **real-time PCR** 或等溫的 **TMA(轉錄介導擴增)** 定量。",
+      "interpret": "病毒量下降反映治療反應；**TMA 為等溫(不需溫度循環)、產物為 RNA、以特異性探針定量**。",
+      "pitfall": "檢體保存影響核酸品質：**最佳為 EDTA 血漿、-70℃**；避免 heparin（抑制 PCR）。",
+      "hot": ["HBV 病毒量用 **real-time PCR / TMA** 定量", "**TMA 等溫、產物 RNA、探針定量**", "最佳檢體＝**EDTA 血漿、-70℃**"],
+      "qa": [
+        ["110年 第65題", "**TMA 定量 HBV**：正確為**使用特異性探針進行定量**（等溫、不需溫度循環、不產生大量 DNA 擴增子）"],
+        ["110年 第63題", "HBV 核酸萃取最佳檢體與保存＝**含 EDTA 全血分離之血漿、-70℃**"]
+      ]
+    },
+    {
+      "h1": "感染症分子診斷",
+      "name": "HIV",
+      "en": "HIV molecular testing",
+      "zh": "愛滋病毒分子檢測",
+      "stars": 2,
+      "target": "**HIV RNA**(血漿病毒量)、**proviral DNA**(血球，先天感染)、抗藥性突變(RT/protease)",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "**病毒量監測(血漿 RNA)** 評估治療反應、**嬰兒先天感染**測 proviral DNA、**抗藥性基因型**(reverse transcriptase 與 protease 基因定序)。",
+      "interpret": "定量標的常為 **LTR/pol/gag/int**；常見抗藥突變如 **M184V、Q151M**。",
+      "pitfall": "抗藥性檢測應用**血漿病毒 RNA**(非血球)的 RT/protease 基因定序；嬰兒因母體抗體干擾，改測 **proviral DNA**。",
+      "hot": ["病毒量＝**血漿 HIV RNA**；嬰兒先天感染測 **proviral DNA**", "抗藥性定序 **RT/protease**，突變如 M184V", "定量標的 LTR/pol/gag/int"],
+      "qa": [
+        ["113年 第67題", "HIV 分子檢測：抗藥性應擴增**血漿病毒 RNA** 的 RT/protease 基因定序（『擴增血球中病毒核酸』為最不適當）；嬰兒先天感染測 proviral DNA、抗藥突變如 M184V/Q151M"]
+      ]
+    },
+    {
+      "h1": "藥物基因體學",
+      "name": "CYP2C19 / clopidogrel",
+      "en": "CYP2C19 genotype for clopidogrel",
+      "zh": "clopidogrel 代謝基因型",
+      "stars": 2,
+      "target": "**CYP2C19** 功能缺失等位基因（*2、*3 等），影響 **clopidogrel** 之活化",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "**clopidogrel(保栓通)** 為前驅藥，需 CYP2C19 代謝活化成活性代謝物；**接受冠狀動脈支架置入**等抗血小板治療者用藥前可評估基因型。",
+      "interpret": "CYP2C19 **慢代謝型(*2/*3)** 活化不足 → **療效差、支架血栓風險上升**，可考慮替代藥（prasugrel/ticagrelor）。",
+      "pitfall": "藥物基因體學是研究**基因多型性如何影響藥物反應**（非藥物造成基因序列改變），屬個人化醫療。",
+      "hot": ["**clopidogrel** 用於**冠狀動脈支架置入**者(抗血小板)", "**CYP2C19 慢代謝型 → clopidogrel 療效差**", "藥物基因體學＝基因影響藥物反應，非藥物改變基因"],
+      "qa": [
+        ["109年 第53題", "最可能需服用 **clopidogrel** 者＝**接受冠狀動脈支架置入手術者**"],
+        ["110年 第53題", "藥物基因體學：**『研究藥物服用如何造成基因序列改變』為錯誤**（應為研究基因多型性如何影響藥物療效與副作用，屬個人化醫療）"]
+      ]
+    }
+  ]
+}

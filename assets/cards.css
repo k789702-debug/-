@@ -1,0 +1,49 @@
+:root{--bg:#0f1115;--card:#171a21;--ink:#e8eaed;--mut:#9aa3b2;--acc:#4ea1ff;--line:#272b34;--hot:#ffce5a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;line-height:1.6}
+.top{position:sticky;top:0;z-index:5;background:#0f1115ee;backdrop-filter:blur(6px);border-bottom:1px solid var(--line);padding:12px 16px}
+.title-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.th-badge{background:var(--acc);color:#04101f;font-weight:700;border-radius:8px;padding:4px 10px}
+h1{font-size:1.25rem;margin:0}
+.sub{color:var(--mut);font-size:.85rem}
+.nav{margin-left:auto;display:flex;gap:6px}
+.nav a{color:var(--mut);text-decoration:none;padding:4px 10px;border-radius:8px;border:1px solid var(--line)}
+.nav a.cur{color:#04101f;background:var(--acc);font-weight:700}
+.controls{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+#search{flex:1;min-width:240px;background:#0c0e13;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 12px}
+.btn-mini{background:#0c0e13;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 12px;cursor:pointer}
+.legend{color:var(--mut);font-size:.8rem;margin-top:8px}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.group{margin:18px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.group-head{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#12151c;cursor:pointer;font-weight:700}
+.group.collapsed .group-body{display:none}
+.flow{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--mut)}
+.flow .ln{font-size:.9rem}
+.cards{padding:12px;display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card-head{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;flex-wrap:wrap}
+.card-head .en{color:var(--mut);font-size:.85rem}
+.card-head .abbr{font-weight:800;font-size:1.05rem}
+.card-head .zh{color:var(--ink)}
+.card-head .stars{color:var(--hot);margin-left:auto}
+.card.collapsed .card-body{display:none}
+.card-body{padding:0 14px 14px;border-top:1px solid var(--line)}
+.field{margin-top:12px}
+.field .k{font-weight:700;color:var(--acc);font-size:.9rem;margin-bottom:4px}
+table{border-collapse:collapse;width:100%;font-size:.88rem}
+th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#12151c}
+/* 寬表（qc/技術鑑別）在窄螢幕可橫向捲動，不撐破版面 */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-scroll>table{width:auto;min-width:100%}
+/* 鍵盤操作可見焦點（標題列已是 role=button） */
+.card-head:focus-visible,.group-head:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.tags a,.xref{color:var(--acc);text-decoration:none;border-bottom:1px dashed var(--acc)}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pc .pros{color:#8ee6a8}.pc .cons{color:#ff9a9a}
+.hot{margin-top:14px;background:#1b1709;border:1px solid #3a2f12;border-radius:10px;padding:8px 12px}
+.hot .k{color:var(--hot);font-weight:700}
+table.qa td.yr{white-space:nowrap;color:var(--mut)}
+b{color:#fff}
+.nohit{display:none;color:var(--mut);text-align:center;padding:30px}
+.err{color:#ff9a9a;padding:20px;border:1px solid #3a1212;border-radius:10px}

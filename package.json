@@ -1,0 +1,10 @@
+{
+  "name": "molecular-diagnostics-exam-outline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "醫事檢驗師「醫學分子檢驗學」：技術與臨床應用大綱（資料驅動、零相依驗證器）",
+  "scripts": {
+    "validate": "node scripts/validate_tech.js && node scripts/validate_clinical.js",
+    "validate:strict": "node scripts/validate_tech.js --strict-links && node scripts/validate_clinical.js --strict-links"
+  }
+}
