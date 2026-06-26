@@ -1,28 +1,40 @@
 {
   "meta": {
     "subject": "醫學分子檢驗學",
-    "version": "0.4.0",
+    "version": "0.5.0",
     "updated": "2026-06-26",
     "source": "考選部「醫事檢驗師」國家考試「醫學分子檢驗學與臨床鏡檢學（包括寄生蟲學）」民國 110、113 年，經 moex-exam 檢索分子題",
-    "groups": ["腫瘤分子標記", "藥物基因體學", "感染症分子診斷", "遺傳病與產前篩檢"]
+    "groups": ["細菌與黴菌鑑定", "病毒鑑定", "遺傳疾病", "血液疾病", "腫瘤標誌", "藥物基因體學", "組織抗原(HLA)", "親子鑑定"]
   },
   "flows": {
-    "腫瘤分子標記": [
-      "懷疑 CML → 偵測 **t(9;22) BCR-ABL1** → 確診後以 **RT-qPCR 定量(IS)** 監測治療反應(MMR/DMR)"
+    "細菌與黴菌鑑定": [
+      "臨床檢體/培養菌 → 萃取核酸 → 擴增 **16S rRNA(細菌)／28S D1-D2·ITS(真菌)** → 定序比對資料庫 → 菌種鑑定／抗藥基因偵測"
+    ],
+    "病毒鑑定": [
+      "採檢(注意抗凝劑/保存) → 核酸萃取 → RT/PCR 或等溫擴增 → 病毒量定量／基因分型／抗藥性定序 → 指導治療"
+    ],
+    "遺傳疾病": [
+      "家族史/帶因篩檢 → 依變異型選法(大片段缺失用 gap-PCR、點突變用定序/ARMS) → 產前診斷(注意母體污染) → 遺傳諮詢"
+    ],
+    "血液疾病": [
+      "懷疑 CML/ALL → 偵測 **t(9;22) BCR-ABL1** 等融合基因 → 確診後 **RT-qPCR 定量(IS)** 監測微量殘存疾病(MRD)"
+    ],
+    "腫瘤標誌": [
+      "實體腫瘤 → 偵測驅動突變(EGFR/KRAS…) → **伴隨式診斷**指導標靶用藥 → 治療中監測抗藥(次級突變)"
     ],
     "藥物基因體學": [
       "用藥前 → 檢測代謝酵素基因多型性（CYP2C9／CYP2C19／UGT1A1…）→ 預測療效/毒性 → 調整劑量或選藥"
     ],
-    "感染症分子診斷": [
-      "採檢(注意抗凝劑/保存) → 核酸萃取 → RT/PCR 或等溫擴增 → 病毒量定量/基因分型/抗藥性定序 → 指導治療"
+    "組織抗原(HLA)": [
+      "移植配對/藥物過敏風險 → PCR 放大 HLA → **SSOP／SSP-PCR／定序**分型 → 判讀等位基因"
     ],
-    "遺傳病與產前篩檢": [
-      "家族史/帶因篩檢 → 依變異型選法(大片段缺失用 gap-PCR、點突變用定序/ARMS) → 產前診斷(注意母體污染) → 遺傳諮詢"
+    "親子鑑定": [
+      "採 DNA → 擴增多組 **STR(microsatellite)** → 毛細管電泳分型 → 比對親代等位基因/計算親緣指數"
     ]
   },
   "clinical": [
     {
-      "h1": "腫瘤分子標記",
+      "h1": "血液疾病",
       "name": "BCR-ABL1",
       "en": "BCR-ABL1 fusion transcript",
       "zh": "費城染色體 t(9;22) 融合基因",
@@ -71,7 +83,7 @@
       ]
     },
     {
-      "h1": "感染症分子診斷",
+      "h1": "病毒鑑定",
       "name": "HCV 基因分型",
       "en": "HCV genotyping",
       "zh": "C型肝炎病毒基因分型",
@@ -88,7 +100,7 @@
       ]
     },
     {
-      "h1": "遺傳病與產前篩檢",
+      "h1": "遺傳疾病",
       "name": "甲型海洋性貧血",
       "en": "Alpha-thalassemia",
       "zh": "甲型海洋性貧血（α-thalassemia）",
@@ -104,7 +116,7 @@
       ]
     },
     {
-      "h1": "遺傳病與產前篩檢",
+      "h1": "遺傳疾病",
       "name": "唐氏症 / NIPT",
       "en": "Down syndrome (trisomy 21) / NIPT",
       "zh": "唐氏症與非侵入性產前檢測",
@@ -120,7 +132,7 @@
       ]
     },
     {
-      "h1": "遺傳病與產前篩檢",
+      "h1": "遺傳疾病",
       "name": "β型海洋性貧血",
       "en": "Beta-thalassemia",
       "zh": "乙型海洋性貧血（β-thalassemia）",
@@ -138,7 +150,7 @@
       ]
     },
     {
-      "h1": "腫瘤分子標記",
+      "h1": "腫瘤標誌",
       "name": "EGFR",
       "en": "EGFR mutation (lung cancer companion dx)",
       "zh": "肺癌 EGFR 標靶基因檢測",
@@ -157,7 +169,7 @@
       ]
     },
     {
-      "h1": "腫瘤分子標記",
+      "h1": "腫瘤標誌",
       "name": "BRCA / HER2",
       "en": "Breast cancer markers (BRCA1/2, ER, HER2)",
       "zh": "乳癌分子標誌",
@@ -174,7 +186,7 @@
       ]
     },
     {
-      "h1": "腫瘤分子標記",
+      "h1": "病毒鑑定",
       "name": "HPV",
       "en": "Human papillomavirus genotyping",
       "zh": "人類乳突病毒檢測",
@@ -191,7 +203,7 @@
       ]
     },
     {
-      "h1": "感染症分子診斷",
+      "h1": "病毒鑑定",
       "name": "HBV 病毒量",
       "en": "HBV viral load",
       "zh": "B型肝炎病毒量監測",
@@ -208,7 +220,7 @@
       ]
     },
     {
-      "h1": "感染症分子診斷",
+      "h1": "病毒鑑定",
       "name": "HIV",
       "en": "HIV molecular testing",
       "zh": "愛滋病毒分子檢測",
@@ -238,6 +250,185 @@
       "qa": [
         ["109年 第53題", "最可能需服用 **clopidogrel** 者＝**接受冠狀動脈支架置入手術者**"],
         ["110年 第53題", "藥物基因體學：**『研究藥物服用如何造成基因序列改變』為錯誤**（應為研究基因多型性如何影響藥物療效與副作用，屬個人化醫療）"]
+      ]
+    },
+    {
+      "h1": "細菌與黴菌鑑定",
+      "name": "細菌16S rRNA鑑定",
+      "en": "Bacterial 16S rRNA identification",
+      "zh": "細菌 16S rRNA 基因定序鑑定",
+      "stars": 3,
+      "target": "細菌 **16S rRNA(rDNA)** 基因——含**保守區**(設計通用引子)與**高變異區(V1–V9)**(區分菌種)",
+      "method": ["Sanger", "NGS", "qPCR"],
+      "clinical": "**細菌菌種鑑定與新種鑑定的主要依據**；尤其適用培養困難、生化反應不典型之菌株。以通用引子擴增 16S 後定序、比對序列資料庫。",
+      "interpret": "保守區供通用引子結合、變異區決定種別；序列相似度最高者為鑑定結果。**鑑定新發現細菌種類的主要依據＝16S rRNA 序列**。",
+      "pitfall": "近緣種 16S 高度相似時辨別力有限，需輔以其他基因(如 rpoB)或全基因體定序。",
+      "hot": ["**細菌分子鑑定最常用＝16S rRNA**", "保守區設通用引子、變異區區分菌種", "**新細菌種鑑定主要依據＝16S rRNA 序列**"],
+      "qa": [
+        ["110年 第58題", "目前最常應用於細菌分子鑑定的檢測基因＝**16S rRNA**"],
+        ["113年 第69題", "鑑定新發現細菌種類的主要依據＝**16S rRNA 序列**（非外觀型態/生化特徵/細胞壁成分）"],
+        ["113年 第67題", "16S rRNA 適合細菌定型(高拷貝數、種內高保留、標準序列庫完整)；**『不同種間具 10 個高變異區』最不適當(答案 B)——實為 V1–V9 共九個高變異區**"]
+      ]
+    },
+    {
+      "h1": "細菌與黴菌鑑定",
+      "name": "真菌分子鑑定",
+      "en": "Fungal molecular identification",
+      "zh": "真菌分子鑑定",
+      "stars": 2,
+      "target": "真菌核糖體 RNA 基因——**28S rDNA 的 D1/D2 區**為主要定序標的；另常用 **ITS** 區",
+      "method": ["Sanger", "NGS"],
+      "clinical": "酵母菌/黴菌之菌種鑑定，補形態學之不足。**28S rDNA D1/D2** 與 **ITS(internal transcribed spacer)** 為標準靶區。",
+      "interpret": "擴增 D1/D2 或 ITS 後定序、比對真菌資料庫(如 MycoBank/CBS)判種。",
+      "hot": ["**真菌分子鑑定主要定序標的＝28S rDNA D1/D2 區**", "ITS 區為另一常用靶", "對比：細菌用 16S、真菌用 28S/ITS"],
+      "qa": [
+        ["109年 第62題", "真菌分子鑑定主要針對 **28S rDNA 的 D1/D2 區**進行定序（非 16S/18S/5.8S rDNA）"]
+      ]
+    },
+    {
+      "h1": "細菌與黴菌鑑定",
+      "name": "結核分枝桿菌分子檢測",
+      "en": "Mycobacterium tuberculosis molecular detection",
+      "zh": "結核分枝桿菌分子檢測",
+      "stars": 2,
+      "target": "**結核分枝桿菌(M. tuberculosis)** 核酸；菌株分型與**藥物感受性(抗藥基因)**",
+      "method": ["qPCR", "Microarray"],
+      "clinical": "痰/檢體直接核酸偵測加速診斷；**PCR-RFLP(如 IS6110-RFLP)** 以已知圖譜比對進行菌株分型(分子流行病學)；**核酸生物晶片**可檢測藥物感受性(抗藥基因)。",
+      "interpret": "**IS6110-RFLP** 比對限制酶切圖譜判菌株；晶片偵測 rpoB(RIF)/katG(INH) 等抗藥基因。",
+      "hot": ["**PCR-RFLP(IS6110)** 以已知圖譜比對進行結核菌株分型", "核酸晶片可測**結核桿菌藥物感受性**", "分子法加速 TB 診斷與抗藥偵測"],
+      "qa": [
+        ["113年 第70題", "以**已知圖譜比對鑑定結核分枝桿菌**的方法＝**PCR-RFLP**(如 IS6110-RFLP；非 PCR-ribotyping)"],
+        ["113年 第51題", "核酸生物晶片**最不適合**＝檢測疫苗後抗體效價；可用於標靶藥物選擇、致癌基因表現、**結核桿菌藥物感受性**"]
+      ]
+    },
+    {
+      "h1": "細菌與黴菌鑑定",
+      "name": "細菌抗藥基因偵測",
+      "en": "Bacterial antimicrobial resistance genes (VRE/MRSA)",
+      "zh": "細菌抗藥基因偵測",
+      "stars": 2,
+      "target": "細菌抗藥基因，如 **VRE 的 van 基因(vanA/vanB/vanC)**、MRSA 的 **mecA**",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "分子法快速偵測抗藥基因，指導用藥與院內感控。**萬古黴素抗藥腸球菌(VRE)** 由 van-ligase 變異造成，vanA/vanB 位於跳躍子可水平傳播。",
+      "interpret": "**抗藥強度 vanA > vanB > vanC**；vanA/vanB 在 transposon 上、可經接合(conjugation)傳遞；vanC 無法經接合傳遞。",
+      "pitfall": "基因型不一定等於表現型，需配合表型藥敏判讀。",
+      "hot": ["**VRE 抗藥強度 vanA > vanB > vanC**", "vanA/vanB 在跳躍子(transposon)、可水平傳播", "MRSA 偵測 **mecA**"],
+      "qa": [
+        ["109年 第61題", "VRE：由 van-encoding ligase 變異所致、vanA/vanB 在跳躍子上；**『抗藥強度 vanC>vanB>vanA』為錯誤**（實為 vanA>vanB>vanC）"]
+      ]
+    },
+    {
+      "h1": "血液疾病",
+      "name": "ALL 微量殘存疾病(MRD)",
+      "en": "ALL minimal residual disease",
+      "zh": "急性淋巴白血病微量殘存疾病監測",
+      "stars": 2,
+      "target": "白血病細胞特異標記——**TCR/IG 基因重組片段**或融合基因(如 BCR-ABL1)",
+      "method": ["qPCR", "Sanger"],
+      "clinical": "**急性淋巴白血病(ALL)** 治療後之**微量殘存疾病(MRD)監測**，評估療效與復發風險。",
+      "interpret": "以 PCR 偵測 **TCR 或 IG 基因重組**(接合區因人而異、各病人**獨特**)；**官方考點：MRD 靈敏度至少須達 10⁻³(約 1/1000)**；可將 ALL 細胞與不同量正常細胞混合作半定量標準。",
+      "pitfall": "**MRD 標的具病人特異性**：TCR/IG 接合(junctional)序列因人而異，**不能以『病人間保留性高的 J region』設計通用探針**(此即 113-75 之最不適當敘述)。",
+      "hot": ["**ALL MRD 偵測 TCR/IG 基因重組**或融合基因", "**MRD 靈敏度至少須達 10⁻³**", "標的具病人特異性；半定量以白血病與正常細胞不同比例混合作標準"],
+      "qa": [
+        ["113年 第75題", "ALL MRD：可測 TCR/IG 基因片段、以不同比例正常細胞混合作半定量標準為正確；**『J region 在病人間保留性高、可據此設計探針』為最不適當(答案 B)**——TCR/IG 接合區為病人特異"],
+        ["113年 第72題", "白血病 **MRD 檢測靈敏度至少須達 10⁻³**(答案 B)"]
+      ]
+    },
+    {
+      "h1": "血液疾病",
+      "name": "NPM1 (AML)",
+      "en": "NPM1 mutation in AML",
+      "zh": "急性骨髓性白血病 NPM1 突變",
+      "stars": 2,
+      "target": "**NPM1** 基因 **exon 12** 之 **4 bp 插入(insertion)** 突變（常見於 AML）",
+      "method": ["Sanger", "NGS"],
+      "clinical": "**急性骨髓性白血病(AML)** 常見分子標記與預後/MRD 標的；NPM1 突變多為 exon 12 的 4 bp 插入。",
+      "interpret": "以傳統 PCR 配合 **Sanger 定序**可見插入造成的序列位移（插入處後出現疊峰/位移）。",
+      "hot": ["**AML 常見 NPM1 exon12 之 4 bp 插入突變**", "可用 PCR＋Sanger 定序偵測插入", "NPM1 為 AML 分子標記/MRD 標的"],
+      "qa": [
+        ["113年 第59題", "**NPM1** 基因在血液腫瘤(AML)最常見 **exon 12 的 4 bp 插入突變**；以傳統 PCR 配合 Sanger 定序可見插入之定序圖"]
+      ]
+    },
+    {
+      "h1": "組織抗原(HLA)",
+      "name": "HLA 分型",
+      "en": "HLA typing",
+      "zh": "人類白血球抗原(HLA)分型",
+      "stars": 2,
+      "target": "**人類白血球抗原(HLA)** 等位基因（class I：A/B/C；class II：DR/DQ/DP）",
+      "method": ["SSOP", "Sanger", "NGS"],
+      "clinical": "**移植配對(器官/造血幹細胞)**、輸血、藥物過敏風險（HLA-B*57:01/abacavir、HLA-B*15:02/carbamazepine）、疾病關聯(HLA-B27)。",
+      "interpret": "常用 **SSOP(序列特異寡核苷酸探針雜交)**、**SSP-PCR(序列特異引子)**、**SBT(定序分型)**；皆**需先 PCR 放大 HLA**；SSOP 一探針可結合多種等位基因、解析度有限。",
+      "pitfall": "低解析法涵蓋有限、無法測所有等位基因；移植需高解析(定序)分型。",
+      "hot": ["HLA 分型法：**SSOP／SSP-PCR／定序(SBT)**，皆需先 PCR", "用於移植配對、藥物過敏風險、疾病關聯", "SSOP 一探針可結合多種等位基因、解析有限"],
+      "qa": [
+        ["110年 第54題", "使用**雜交(hybridization)**鑑定 HLA 的方法＝**特異性寡核苷酸探針(SSOP)**"],
+        ["109年 第55題", "HLA 分型用 SSOP 探針特性：單股寡核苷酸、約 19–20 bases、有標定；**『RNA 探針』非其特性**"],
+        ["113年 第57題", "SSOP 進行 HLA 分型：檢體為全血/唾液、每探針可結合多種等位基因、涵蓋有限；**『無需先以 PCR 放大 HLA 基因』最不適當**(需先 PCR)"]
+      ]
+    },
+    {
+      "h1": "親子鑑定",
+      "name": "親子鑑定 (STR)",
+      "en": "Parentage testing / STR profiling",
+      "zh": "親子鑑定與個人鑑別(STR)",
+      "stars": 2,
+      "target": "**短串聯重複序列(STR, microsatellite)**——多組高度多型性位點；性別以 amelogenin",
+      "method": ["Electrophoresis", "NGS"],
+      "clinical": "親子鑑定、個人身分鑑別、無名屍辨識、臨床檢體混淆查核、親緣(kinship)鑑定；以多組 **STR** 分型比對。",
+      "interpret": "子代每個 STR 位點之兩個等位基因應分別來自父、母；不符即可排除。**microsatellite 為親子鑑定良好工具**，重複單位短(約 2–6 bp)、長度高度多型。",
+      "pitfall": "microsatellite 重複長度常不穩定(可變)，須用標準化套組與對照確保再現性。",
+      "hot": ["**親子鑑定/個人鑑別用 STR(microsatellite)**", "應用：無名屍鑑定、檢體混淆、親緣鑑定", "STR 重複單位短、長度高度多型"],
+      "qa": [
+        ["109年 第44題", "**microsatellite markers**：為親子鑑定良好工具、重複長度常不穩定、廣布全基因體；**『通常為 6–10 個核苷酸為一單位』為錯誤**(實際約 2–6 bp)"],
+        ["113年 第58題", "親子鑑定技術的應用範圍＝**無名屍身分判定、親緣(kinship)鑑定、臨床檢體混淆**(三者皆是)"]
+      ]
+    },
+    {
+      "h1": "病毒鑑定",
+      "name": "BKV",
+      "en": "BK polyomavirus load",
+      "zh": "BK 多瘤病毒量監測",
+      "stars": 2,
+      "target": "**BKV(BK polyomavirus) DNA** 病毒量",
+      "method": ["qPCR"],
+      "clinical": "**腎臟移植**患者監測 BKV 再活化（BKV 腎病風險）；檢體可為血液或尿液。",
+      "interpret": "病毒量上升提示 BKV 再活化；**血液檢體不應使用 heparin 抗凝（抑制 PCR）**，應儘快離心分離血漿分裝、-20℃ 以下保存。",
+      "hot": ["**腎移植監測 BKV 病毒量**", "血液檢體**避免 heparin**（抑制 PCR）", "儘快離心分血漿、-20℃ 以下保存"],
+      "qa": [
+        ["113年 第47題", "腎移植 BKV 病毒量監測：血液/尿液皆可、儘快離心分血漿、-20℃ 以下保存；**『以 heparin 抗凝』最不適當**（抑制 PCR）"]
+      ]
+    },
+    {
+      "h1": "腫瘤標誌",
+      "name": "GIST (C-KIT)",
+      "en": "GIST C-KIT/PDGFRA mutation",
+      "zh": "胃腸道間質瘤 C-KIT 突變",
+      "stars": 2,
+      "target": "**C-KIT** 基因突變（最常 **exon 11**）；部分為 **PDGFRA** 突變",
+      "method": ["Sanger", "NGS"],
+      "clinical": "**胃腸道間質瘤(GIST)** 之分子標記，指導 **imatinib** 等酪胺酸激酶抑制劑(TKI)標靶治療。",
+      "interpret": "**C-KIT 突變最常發生於 exon 11**；突變位置影響 TKI 反應與抗藥。",
+      "hot": ["**GIST C-KIT 突變最常在 exon 11**", "指導 imatinib 等 TKI 標靶治療", "部分 GIST 為 PDGFRA 突變"],
+      "qa": [
+        ["109年 第74題", "胃腸道間質瘤(GIST)的 **C-KIT 基因突變最常發生在 exon 11**"]
+      ]
+    },
+    {
+      "h1": "遺傳疾病",
+      "name": "三核苷酸重複疾病",
+      "en": "Trinucleotide repeat disorders",
+      "zh": "三核苷酸重複擴增疾病",
+      "stars": 2,
+      "target": "**三核苷酸重複序列異常擴增**——如**亨丁頓舞蹈症(HTT, CAG)**、**脆性X(FMR1, CGG)**、肌強直性失養症",
+      "method": ["Electrophoresis", "Blotting"],
+      "clinical": "由重複次數異常擴增致病，常見**早現(anticipation)**現象；致病機制與點突變、缺失/插入不同。",
+      "interpret": "以 PCR 測重複次數；**大片段擴增(如脆性X full mutation)需 Southern blot**。**亨丁頓舞蹈症屬三核苷酸重複、非點突變**；β-海洋性貧血**不屬**此機制(為點突變/小insertion/deletion)。",
+      "pitfall": "超大擴增 PCR 不易跨越，需 Southern blot 或 TP-PCR 輔助。",
+      "hot": ["**亨丁頓(CAG)、脆性X(CGG)＝三核苷酸重複擴增病**", "重複擴增 ≠ 點突變；**β-thal 不屬此機制**", "大擴增需 Southern blot 偵測"],
+      "qa": [
+        ["113年 第45題", "下列疾病多由點突變引起，**除外者＝亨丁頓舞蹈症(Huntington)**（屬三核苷酸重複擴增）"],
+        ["109年 第68題", "**不屬於**乙型海洋性貧血分子機制者＝**三核苷酸重複**（β-thal 為點突變/小缺失/小插入）"]
       ]
     }
   ]
