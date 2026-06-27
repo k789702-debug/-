@@ -1,19 +1,21 @@
-:root{--bg:#0f1115;--ink:#e8eaed;--mut:#9aa3b2;--tech:#4ea1ff;--clin:#7ee0a3;--line:#272b34}
+:root{--bg:#0f1115;--ink:#e8eaed;--mut:#9aa3b2;--tech:#4ea1ff;--clin:#7ee0a3;--micro:#e0a96e;--line:#272b34}
 *{box-sizing:border-box}
 body{margin:0;background:radial-gradient(1200px 600px at 50% -10%,#16202e,#0f1115);color:var(--ink);font-family:"Segoe UI","Microsoft JhengHei",system-ui,sans-serif;line-height:1.6;min-height:100vh}
 .wrap{max-width:900px;margin:0 auto;padding:60px 20px}
 .kicker{color:var(--mut);letter-spacing:.2em;font-size:.8rem}
 h1{font-size:2rem;margin:.2em 0}
 .sub{color:var(--mut);margin-bottom:28px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 @media(max-width:680px){.grid{grid-template-columns:1fr}}
 .tile{display:block;text-decoration:none;color:var(--ink);background:#171a21;border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .12s,border-color .12s}
 .tile:hover{transform:translateY(-3px)}
 .tile.tech:hover{border-color:var(--tech)}
 .tile.clinical:hover{border-color:var(--clin)}
+.tile.micro:hover{border-color:var(--micro)}
 .badge{display:inline-block;font-weight:700;border-radius:8px;padding:3px 10px;color:#04101f}
 .tile.tech .badge{background:var(--tech)}
 .tile.clinical .badge{background:var(--clin)}
+.tile.micro .badge{background:var(--micro)}
 .tile h2{margin:10px 0 6px;font-size:1.2rem}
 .tile p{color:var(--mut);font-size:.92rem}
 .tile .meta{color:var(--ink);font-weight:600;margin-top:8px}

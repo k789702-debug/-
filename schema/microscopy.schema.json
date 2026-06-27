@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "臨床鏡檢學模組 資料結構",
+  "type": "object",
+  "required": ["meta", "microscopy"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["subject", "groups"],
+      "properties": {
+        "subject": { "type": "string" },
+        "version": { "type": "string" },
+        "updated": { "type": "string" },
+        "source": { "type": "string" },
+        "groups": { "type": "array", "items": { "type": "string" }, "minItems": 1 }
+      }
+    },
+    "flows": {
+      "type": "object",
+      "additionalProperties": { "type": "array", "items": { "type": "string" } }
+    },
+    "microscopy": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["h1","name","en","zh","stars","findings","clinical","hot","qa"],
+        "additionalProperties": false,
+        "properties": {
+          "h1": { "type": "string" },
+          "name": { "type": "string" },
+          "en": { "type": "string" },
+          "zh": { "type": "string" },
+          "stars": { "type": "integer", "minimum": 1, "maximum": 3 },
+          "appearance": { "type": "string" },
+          "chemistry": { "type": "string" },
+          "findings": { "type": "string" },
+          "clinical": { "type": "string" },
+          "interpret": { "type": "string" },
+          "pitfall": { "type": "string" },
+          "compare": {
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "array", "items": { "type": "string" }, "minItems": 2 }
+          },
+          "hot": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "qa": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "array", "items": { "type": "string" }, "minItems": 2, "maxItems": 2 }
+          }
+        }
+      }
+    }
+  }
+}

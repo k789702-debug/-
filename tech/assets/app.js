@@ -8,10 +8,10 @@
   let DATA=null, CLINICAL=new Set();
 
   // 先抓臨床卡名稱白名單（失敗不影響主流程，只是不連結）
-  const xref = fetch('../clinical/data/clinical.json')
+  const xref = fetch('../clinical/data/clinical.json', {cache:'no-cache'})
     .then(r=>r.ok?r.json():null).then(d=>{ if(d&&Array.isArray(d.clinical)) d.clinical.forEach(c=>CLINICAL.add(c.name)); }).catch(()=>{});
 
-  const boot = fetch('data/tech.json').then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
+  const boot = fetch('data/tech.json', {cache:'no-cache'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
   Promise.all([boot, xref]).then(([d])=>{ DATA=d; render(); })
     .catch(e=>{ $('#cards').innerHTML='<div class="err">無法載入 <b>data/tech.json</b>（'+esc(e.message)+'）。請用本機伺服器（<code>python -m http.server</code>）或 GitHub Pages 網址開啟，勿用 file://。</div>'; });
 

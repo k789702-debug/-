@@ -1,29 +1,26 @@
-/* 分子檢驗臨床應用大綱 — 前端渲染
-   資料來源：data/clinical.json（共編者只需編輯該檔）
-   ** 文字 ** → 粗體；method 中能對應技術卡(abbr/en/zh)者連到 ../tech/index.html?q=abbr */
+/* 臨床鏡檢學大綱 — 前端渲染
+   資料來源：data/microscopy.json（共編者只需編輯該檔）
+   單軸模組：依官方 11 章（meta.groups）分群，無跨模組互連。
+   ** 文字 ** → 粗體；compare → 鑑別比較表 */
 (function(){
   const $ = s => document.querySelector(s);
   const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const md = s => esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
-  let DATA=null, TECH=new Map(); // key: abbr/en/zh → abbr
+  let DATA=null;
 
-  const xref = fetch('../tech/data/tech.json', {cache:'no-cache'})
-    .then(r=>r.ok?r.json():null).then(d=>{ if(d&&Array.isArray(d.tech)) d.tech.forEach(t=>{ [t.abbr,t.en,t.zh].forEach(k=>{ if(k) TECH.set(k,t.abbr); }); }); }).catch(()=>{});
-
-  const boot = fetch('data/clinical.json', {cache:'no-cache'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); });
-  Promise.all([boot, xref]).then(([d])=>{ DATA=d; render(); })
-    .catch(e=>{ $('#cards').innerHTML='<div class="err">無法載入 <b>data/clinical.json</b>（'+esc(e.message)+'）。請用本機伺服器（<code>python -m http.server</code>）或 GitHub Pages 網址開啟，勿用 file://。</div>'; });
+  fetch('data/microscopy.json', {cache:'no-cache'}).then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(d=>{ DATA=d; render(); })
+    .catch(e=>{ $('#cards').innerHTML='<div class="err">無法載入 <b>data/microscopy.json</b>（'+esc(e.message)+'）。請用本機伺服器（<code>python -m http.server</code>）或 GitHub Pages 網址開啟，勿用 file://。</div>'; });
 
   function strField(title, s){
     if(typeof s!=='string'||!s.trim()) return '';
     return '<div class="field"><div class="k">'+title+'</div><div class="v">'+md(s)+'</div></div>';
   }
-  function methodField(methods){
-    if(!Array.isArray(methods)||!methods.length) return '';
-    const items=methods.map(m=> TECH.has(m)
-      ? '<a class="xref" href="../tech/index.html?q='+encodeURIComponent(TECH.get(m))+'" title="到技術大綱查 '+esc(m)+'">'+esc(m)+'</a>'
-      : esc(m)).join('、');
-    return '<div class="field"><div class="k">常用技術</div><div class="v tags">'+items+'</div></div>';
+  function cmpTable(rows){
+    if(!Array.isArray(rows)||rows.length<2) return '';
+    const head='<tr>'+rows[0].map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>';
+    const body=rows.slice(1).map(r=>'<tr>'+r.map((c,ci)=>'<td>'+(ci===0?md(c):esc(c))+'</td>').join('')+'</tr>').join('');
+    return '<div class="field"><div class="k">鑑別比較</div><div class="table-scroll"><table><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div></div>';
   }
 
   // 可及性：把可點的標題列變成可鍵盤操作的 button 語意，並同步 aria-expanded
@@ -43,15 +40,17 @@
     });
   }
 
-  function clinicalCard(d){
+  function microscopyCard(d){
     const card=document.createElement('article');
     card.className='card'; card.id=encodeURIComponent(d.name);
     const fields=
-      strField('檢測標的', d.target)+
-      methodField(d.method)+
+      strField('外觀／理學', d.appearance)+
+      strField('化學／生化', d.chemistry)+
+      strField('🔬 鏡檢所見', d.findings)+
       strField('臨床意義', d.clinical)+
       strField('結果判讀', d.interpret)+
-      strField('常見陷阱／鑑別', d.pitfall);
+      strField('陷阱／久置變化', d.pitfall)+
+      cmpTable(d.compare);
     const hot=(d.hot||[]).map(h=>'<li>'+md(h)+'</li>').join('');
     const qa=(d.qa||[]).map(q=>'<tr><td class="yr">'+esc(q[0])+'</td><td>'+esc(q[1])+'</td></tr>').join('');
     card.innerHTML=
@@ -65,10 +64,10 @@
   }
 
   function render(){
-    $('#sub').textContent='科目：'+DATA.meta.subject+'｜共 '+DATA.clinical.length+' 張臨床卡';
+    $('#sub').textContent='科目：'+DATA.meta.subject+'｜共 '+DATA.microscopy.length+' 張鏡檢卡';
     const wrap=$('#cards'); wrap.innerHTML='';
     // 群組顯示順序依 meta.groups（官方大綱章節序）；不在清單者退回出現序附於後
-    const seen=[...new Set(DATA.clinical.map(c=>c.h1))];
+    const seen=[...new Set(DATA.microscopy.map(c=>c.h1))];
     const groups=(DATA.meta&&DATA.meta.groups)||[];
     const h1order=[...groups.filter(g=>seen.includes(g)), ...seen.filter(g=>!groups.includes(g))];
     h1order.forEach(h1=>{
@@ -80,7 +79,7 @@
       const body=g.querySelector('.group-body');
       wireToggle(g.querySelector('.group-head'), g);
       const cc=document.createElement('div'); cc.className='cards';
-      DATA.clinical.filter(c=>c.h1===h1).forEach(c=>cc.appendChild(clinicalCard(c)));
+      DATA.microscopy.filter(c=>c.h1===h1).forEach(c=>cc.appendChild(microscopyCard(c)));
       body.appendChild(cc);
       wrap.appendChild(g);
     });
